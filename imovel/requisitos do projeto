@@ -4,16 +4,16 @@ Criar um sistema de acesso restrito para gerenciar imoveis que estao para alugar
 
 usuarios:
 	inquilinos
-		alugar imovel
-		segunda via boleto
-		relatorio de alugueis pagos
-		reclamar(notificar[email] senhorio e imobiliaria)
+		alugar imovel	*1
+		segunda via boleto	*6
+		relatorio de alugueis pagos	*3
+		reclamar(notificar[email] senhorio e imobiliaria)	*4
 	senhorios
-		criar editar e apagar anuncios
-		responder reclamacao
-		relatorio sobre imoveis alugados
+		criar editar e apagar anuncios	[feito]
+		responder reclamacao	*5
+		relatorio sobre imoveis alugados	*2
 			exibir qtd, localizacao, valores
 	convidado
-		ver anuncios
-		criar usuario
+		ver anuncios	[feito]
+		criar usuario	[feito]
 	

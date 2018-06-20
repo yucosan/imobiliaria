@@ -9,7 +9,7 @@
 		//var_dump($srow);
 		if($srow['tipo'] == 'Senhorio'){
 			echo '<li><a href="../users/adicionar_imovel.php"><span class="glyphicon glyphicon-home"></span> Criar anuncio</a></li>';
-			echo '<li><a href="../users/editar_imovel.php"><span class="glyphicon glyphicon-home"></span> Editar anuncio</a></li>';
+			echo '<li><a href="../users/editar_anuncio.php"><span class="glyphicon glyphicon-home"></span> Editar anuncio</a></li>';
 			echo '<li><a href="../users/reclamacoes.php"><span class="glyphicon glyphicon-home"></span> Reclamacoes</a></li>';
 			echo '<li><a href="../users/relatorio.php"><span class="glyphicon glyphicon-home"></span> Relatorio</a></li>';}
 			else{

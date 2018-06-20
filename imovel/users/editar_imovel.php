@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 			<?php
-			//include 'db.php';
 			include('/session.php');
+			
+			$id_imovel = $_GET['id'];
+			
+	$stmt = $pdo->prepare("SELECT * from imovel where id_imovel = ?;");
+
+	$stmt -> execute([$id_imovel]);
+
+	$data = $stmt->fetchAll();
 			?>
 <html>
     <head>
         <meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Imoveis</title>
+        <title>Imobiliaria</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
         </head>
     <body>
@@ -19,41 +26,28 @@
 				<div class="row"style="text-align: center;">
 				<br>
 				<div class="col">
-				<p>Campos vazios não serão mudados.</p>
-						<label>Numero de quartos:</label><br><input type="text" name="n_quartos" id="n_quartos"><br>
-						<label>Numero de banheiros:</label><br><input type="text" name="n_banheiros" id="n_banheiros"><br>
-						<label>Area:</label><br><input type="text" name="area" id="area"><br>
-						<label>CEP:</label><br><input type="text" name="cep" id="cep"><br>
-						<label>Rua:</label><br><input type="text" name="rua" id="rua"><br>
-						<label>Bairro:</label><br><input type="text" name="bairro" id="bairro"><br>
-						<label>Cidade:</label><br><input type="text" name="cidade" id="cidade"><br>
-						<label>Preco:</label><br><input type="text" name="preco" id="preco"><br>
+						<label>Numero de quartos:</label><br><input value = "<?php echo $data[0]['n_quartos'] ?>" type="text" name="n_quartos" id="n_quartos"><br>
+						<label>Numero de banheiros:</label><br><input value = "<?php echo $data[0]['n_banheiros'] ?>" type="text" name="n_banheiros" id="n_banheiros"><br>
+						<label>Area:</label><br><input value = "<?php echo $data[0]['area'] ?>" type="text" name="area" id="area"><br>
+						<label>CEP:</label><br><input value = "<?php echo $data[0]['cep'] ?>" type="text" name="cep" id="cep"><br>
+						<label>Rua:</label><br><input value = "<?php echo $data[0]['rua'] ?>" type="text" name="rua" id="rua"><br>
+						<label>Bairro:</label><br><input value = "<?php echo $data[0]['bairro'] ?>" type="text" name="bairro" id="bairro"><br>
+						<label>Cidade:</label><br><input value = "<?php echo $data[0]['cidade'] ?>" type="text" name="cidade" id="cidade"><br>
+						<label>Preco:</label><br><input value = "<?php echo $data[0]['preco'] ?>" type="text" name="preco" id="preco"><br>
 						<label>Tipo:</label><br>
-						<input type="checkbox" name="tipo" value="casa"> Casa
-						<input type="checkbox" name="tipo" value="apartamento"> Apartamento<br>
+						<input type="checkbox" name="tipo" value="casa" <?php if ($data[0]['tipo'] == 'casa') echo 'checked'?> > Casa
+						<input type="checkbox" name="tipo" value="apartamento"<?php if ($data[0]['tipo'] == 'apartamento') echo 'checked'?> > Apartamento<br>
 
-
-				<!--	<form action="upload.php" method="post" enctype="multipart/form-data">	-->
 						<label>	Select image to upload:</label><br>
-    				<input type="file" name="imagem1" id="imagem1"/>
+						<input type="file" name="imagem1" id="imagem1"/>
 						<input type="file" name="imagem2" id="imagem2"/>
 						<input type="file" name="imagem3" id="imagem3"/>
-					<!--	<input type="submit" value="Upload Image" name="submit">	-->
-				</div><!--
-				<div class="col">
-						<label>Dormitorios:</label><br><input type="text" name="Dormitorios" id="Dormitorios"><br>
-						<label>Suites:</label><br><input type="text" name="Suites" id="Suites"><br>
-						<label>Vagas:</label><br><input type="text" name="Vagas" id="Vagas"><br>
-						<label>Area util:</label><br><input type="text" name="Area_util" id="Area_util"><br>
-						<label>Area total:</label><br><input type="text" name="Area_total" id="Area_total"><br>
-						<label>Valor:</label><br><input type="text" name="Valor" id="Valor"><br>
-						<label>Imagem:</label><br><input type="file" name="Imagem" id="Imagem"><br>
--->
 				</div>
 				</div>
+			</div>
 
 				<div style="text-align: center;"><br>
-						<input type="submit" value="Enviar" class="btn btn-primary" id="enviar" name="enviar" formaction="editarenvio.php">
+						<input type="submit" value="Enviar" class="btn btn-primary" id="enviar" name="enviar" formaction="editarenvio.php?id=<?php echo $id_imovel?>">
 				</div>
 			</form>
 		</div>

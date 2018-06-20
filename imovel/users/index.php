@@ -6,6 +6,23 @@
 				<div style="text-align: center;">
 <?php
 
+	if($srow['tipo'] == 'Senhorio')
+	{
+	$stmt = $pdo->prepare("SELECT * from imovel where id_responsavel = ?;");
+
+	$stmt -> execute([$srow['id_usuario']]);
+	
+	$data = $stmt->fetchAll();
+
+	$result = $stmt->rowcount();
+	
+	if ($result<2)
+	echo "Responsavel por ".$result." imovel";
+	else
+	echo "Responsavel por ".$result." imoveis";
+}
+ else
+{	
 	$stmt = $pdo->prepare("SELECT * from imovel where disponivel = true;");
 
 	$stmt -> execute();
@@ -13,15 +30,12 @@
 	$data = $stmt->fetchAll();
 
 	$result = $stmt->rowcount();
-	//var_dump($result);
+	
 	if ($result<2)
 	echo "Existe ".$result." imovel disponivel";
 else
 	echo "Existem ".$result." imoveis disponiveis";
-//falta colocar
-//botoes drop down para filtrar resultados
-//busca minima : apt vs casa e bairro/regiao
-//busca avancada: dormitorios, valor min max, area
+} 
 	?>
 				<div class="container" id="casas">
 
