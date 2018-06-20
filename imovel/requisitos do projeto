@@ -1,0 +1,19 @@
+Criar um site para busca de imoveis e gerenciamento de aluguel.
+	exibis fotos,caracteristicas, valores, endereco,dado anunciante, forma de contato
+Criar um sistema de acesso restrito para gerenciar imoveis que estao para alugar e tambem os que ja estao alugados.
+
+usuarios:
+	inquilinos
+		alugar imovel
+		segunda via boleto
+		relatorio de alugueis pagos
+		reclamar(notificar[email] senhorio e imobiliaria)
+	senhorios
+		criar editar e apagar anuncios
+		responder reclamacao
+		relatorio sobre imoveis alugados
+			exibir qtd, localizacao, valores
+	convidado
+		ver anuncios
+		criar usuario
+	
