@@ -22,20 +22,28 @@
     </div>
 <!-- /.modal -->
 
-<!-- Update Photo-->
-    <div class="modal fade" id="photo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- Update dados-->
+    <div class="modal fade" id="dados" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <center><h4 class="modal-title" id="myModalLabel">Uploading Photo...</h4></center>
+                    <center><h4 class="modal-title" id="myModalLabel">Dados de contato</h4></center>
                 </div>
                 <div class="modal-body">
 				<div class="container-fluid">
-					<form method="POST" enctype="multipart/form-data" action="update_photo.php">
+					<form method="POST" enctype="multipart/form-data" action="update_dados.php">
 					<div class="form-group input-group">
-						<span class="input-group-addon" style="width:150px;">Photo:</span>
-						<input type="file" style="width:350px;" class="form-control" name="image">
+						<span class="input-group-addon" style="width:150px;">Nome Completo: </span>
+						<input type="text" style="width:350px;" class="form-control" name="nome_completo">
+						<span class="input-group-addon" style="width:150px;">CPF: </span>
+						<input type="text" style="width:350px;" class="form-control" name="cpf">
+						<span class="input-group-addon" style="width:150px;">RG: </span>
+						<input type="text" style="width:350px;" class="form-control" name="rg">
+						<span class="input-group-addon" style="width:150px;">Email para contato: </span>
+						<input type="text" style="width:350px;" class="form-control" name="email_contato">
+						<span class="input-group-addon" style="width:150px;">Telefone para contato: </span>
+						<input type="text" style="width:350px;" class="form-control" name="tel_contato">
 					</div>
                 </div> 
 				</div>

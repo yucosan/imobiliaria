@@ -5,37 +5,14 @@
 		<div class="container">
 				<div style="text-align: center;">
 <?php
+//var_dump($_POST);
+$id_imovel = $_GET['id'];
 
-	if($srow['tipo'] == 'Senhorio')
-	{
-	$stmt = $pdo->prepare("SELECT * from imovel where id_responsavel = ?;");
+	$stmt = $pdo->prepare("SELECT * from imovel where id_imovel = ?;");
 
-	$stmt -> execute([$srow['id_usuario']]);
-	
-	$data = $stmt->fetchAll();
-
-	$result = $stmt->rowcount();
-	
-	if ($result<2)
-	echo "Responsavel por ".$result." imovel";
-	else
-	echo "Responsavel por ".$result." imoveis";
-}
- else
-{	
-	$stmt = $pdo->prepare("SELECT * from imovel where disponivel = true;");
-
-	$stmt -> execute();
+	$stmt -> execute([$id_imovel]);
 
 	$data = $stmt->fetchAll();
-
-	$result = $stmt->rowcount();
-	
-	if ($result<2)
-	echo "Existe ".$result." imovel disponivel";
-else
-	echo "Existem ".$result." imoveis disponiveis";
-} 
 	?>
 				<div class="container" id="casas">
 
@@ -46,7 +23,6 @@ else
 								?>
 									<div class="row equal" style="height: ;">
 										<?php
-										while ($aux2 < $stmt->rowcount()) {
 													$id_imovel[$aux2] = $data[$aux2]["id_imovel"];
 													$id_responsavel[$aux2] = $data[$aux2]["id_responsavel"];
 													$n_quartos[$aux2] = $data[$aux2]["n_quartos"];
@@ -62,11 +38,15 @@ else
 													$preco[$aux2] = $data[$aux2]["preco"];
 													$tipo[$aux2] = $data[$aux2]["tipo"];
 													$imagem1[$aux2] = $data[$aux2]["imagem1"];
+													$imagem2[$aux2] = $data[$aux2]["imagem2"];
+													$imagem3[$aux2] = $data[$aux2]["imagem3"];
 										?>
 										
 										<div class="col-12 col-sm-12  col-md-6 col-lg-4">
 											<div class="card" style="width: 18rem; margin-top: 3rem;">
 											  <img class="card-img-top" style="height: 140px" src="<?php echo 'data:image/jpeg;base64,'.$imagem1[$aux2] ?>" alt="Card image cap">
+											<?php if($imagem2[$aux2] != NULL){?><img class="card-img-top" style="height: 140px" src="<?php echo 'data:image/jpeg;base64,'.$imagem2[$aux2] ?>" alt="Card image cap"><?php }?>
+											<?php if($imagem3[$aux2] != NULL){?><img class="card-img-top" style="height: 140px" src="<?php echo 'data:image/jpeg;base64,'.$imagem3[$aux2] ?>" alt="Card image cap"><?php }?>
 											  <div class="card-body">
 												<h5 class="card-title"> <?php echo $tipo[$aux2] ?></h5><!--
 												<p class="card-text">Blablabla</p> -->
@@ -84,15 +64,12 @@ else
 												<li class="list-group-item"><b>Preco:</b> R$ <?php echo $preco[$aux2] ?></li>
 											  </ul>
 											  <div class="card-body">
-												<a href="detalhes?id=<?php echo $id_imovel[$aux2]?>" class="card-link">Detalhes</a>
+											  <?php if($srow['tipo'] == 'Inquilino'){ ?>
+												<a href="alugar.php?id=<?php echo $id_imovel[$aux2]?>" class="card-link">Alugar</a>
+											  <?php } ?>
 											  </div>
 											</div>
 									</div>
-
-										<?php
-										$aux2++;
-										}
-										?>
 								<?php
 								}
 								?>

@@ -25,7 +25,7 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-						<li><a href="#photo" data-toggle="modal"><span class="glyphicon glyphicon-picture"></span> Update Photo</a></li>
+						<li><a href="#dados" data-toggle="modal"><span class="glyphicon glyphicon-picture"></span> Dados de contato</a></li>
 						<li class="divider"></li>
                         <li><a href="#logout" data-toggle="modal"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
