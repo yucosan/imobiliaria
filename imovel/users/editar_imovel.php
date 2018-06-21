@@ -47,8 +47,12 @@
 			</div>
 
 				<div style="text-align: center;"><br>
-						<input type="submit" value="Enviar" class="btn btn-primary" id="enviar" name="enviar" formaction="editarenvio.php?id=<?php echo $id_imovel?>">
+					<input type="submit" value="Enviar" class="btn btn-primary" id="enviar" name="enviar" formaction="editarenvio.php?id=<?php echo $id_imovel?>">	
+					<br><br><br><br>
+					<input type="submit" value="Apagar Imóvel" class="btn btn-danger" id="apagar" name="apagar" formaction="apagar_imovel.php?id=<?php echo $id_imovel?>">
 				</div>
+				
+				
 			</form>
 		</div>
 		</div>

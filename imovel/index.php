@@ -88,7 +88,7 @@ else
 												<li class="list-group-item"><b>Preco:</b> R$ <?php echo $preco[$aux2] ?></li>
 											  </ul>
 											  <div class="card-body">
-												<a href="#" class="card-link">Detalhes</a>
+												<a href="detalhes?id=<?php echo $id_imovel[$aux2]?>" class="card-link">Detalhes</a>
 											  </div>
 											</div>
 									</div>
