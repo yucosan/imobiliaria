@@ -24,7 +24,7 @@
 				<div style="text-align: center;">
 <?php
 
-	$stmt = $pdo->prepare("SELECT * from imovel where disponivel = true;");
+	$stmt = $pdo->prepare("SELECT * from imovel WHERE disponivel = true;");
 
 	$stmt -> execute();
 

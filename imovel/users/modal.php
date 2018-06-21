@@ -36,12 +36,20 @@
 					<div class="form-group input-group">
 						<span class="input-group-addon" style="width:150px;">Nome Completo: </span>
 						<input type="text" style="width:350px;" class="form-control" name="nome_completo">
+					</div>
+					<div class="form-group input-group">
 						<span class="input-group-addon" style="width:150px;">CPF: </span>
 						<input type="text" style="width:350px;" class="form-control" name="cpf">
+					</div>
+					<div class="form-group input-group">
 						<span class="input-group-addon" style="width:150px;">RG: </span>
 						<input type="text" style="width:350px;" class="form-control" name="rg">
+					</div>
+					<div class="form-group input-group">
 						<span class="input-group-addon" style="width:150px;">Email para contato: </span>
 						<input type="text" style="width:350px;" class="form-control" name="email_contato">
+					</div>
+					<div class="form-group input-group">
 						<span class="input-group-addon" style="width:150px;">Telefone para contato: </span>
 						<input type="text" style="width:350px;" class="form-control" name="tel_contato">
 					</div>

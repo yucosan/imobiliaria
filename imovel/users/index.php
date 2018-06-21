@@ -8,7 +8,7 @@
 
 	if($srow['tipo'] == 'Senhorio')
 	{
-	$stmt = $pdo->prepare("SELECT * from imovel where id_responsavel = ?;");
+	$stmt = $pdo->prepare("SELECT * from imovel WHERE id_responsavel = ?;");
 
 	$stmt -> execute([$srow['id_usuario']]);
 	
@@ -23,7 +23,7 @@
 }
  else
 {	
-	$stmt = $pdo->prepare("SELECT * from imovel where disponivel = true;");
+	$stmt = $pdo->prepare("SELECT * from imovel WHERE disponivel = true;");
 
 	$stmt -> execute();
 
