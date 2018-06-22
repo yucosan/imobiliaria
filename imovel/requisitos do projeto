@@ -7,7 +7,7 @@ usuarios:
 		alugar imovel	[feito]
 		segunda via boleto	*6
 		relatorio de alugueis pagos	[feito]
-		reclamar(notificar[email] senhorio e imobiliaria)	*4
+		reclamar(notificar[email] senhorio e imobiliaria)	[falta email]
 	senhorios
 		criar editar e apagar anuncios	[feito]
 		responder reclamacao	*5
