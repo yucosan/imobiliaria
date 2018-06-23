@@ -31,12 +31,7 @@
 		Inquilino ou Senhorio: <select class="form-control contact-form__input contact-form__input--select" id="tipo" name="tipo">
         <option>Inquilino</option>
         <option>Senhorio</option>
-      </select>
-	  
-<form class="example" action="action_page.php">
-  <input type="text" placeholder="Search.." name="search">
-  <button type="submit"><i class="fa fa-search"></i></button>
-</form>
+      </select>	  
 	  <div style="height: 10px;"></div>
 		<a href="index.php"><button type="submit" id="botao" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Sign Up</button></a><a href="index.php"> Back to main page</a>
       
@@ -97,7 +92,7 @@ function ConvertFormToJSON(form){
             data: json,
 			contentType : "application/json"
         }).done(function() { 
-            console.log("Funcionou essa merda"); 
+            console.log("F"); 
         }).fail(function() { 
             console.log("JSON Submit Failed"); 
         });
@@ -110,7 +105,7 @@ function ConvertFormToJSON(form){
 			data: json,
 			contentType : "application/json"
         }).done(function() { 
-            console.log("Funcionou essa merda"); 
+            console.log("F"); 
         }).fail(function() { 
             console.log("JSON Submit Failed"); 
         });

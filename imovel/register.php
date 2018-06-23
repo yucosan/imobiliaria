@@ -32,7 +32,7 @@ $tipo = $obj['tipo'];
 	{
 		$stmt = $pdo->prepare("INSERT INTO autenticacao(nome, email, senha, tipo) VALUES (?, ?, ?, ?);");
 
-		$stmt -> execute([$username, $email, $password, $tipo]);
+		$stmt -> execute([$username, $email, md5($password), $tipo]);
 		
 		echo 'Usuario cadastrado com sucesso';
 		echo '<br>';

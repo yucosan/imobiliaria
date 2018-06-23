@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2018 at 03:37 PM
+-- Generation Time: Jun 23, 2018 at 01:56 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -39,11 +39,11 @@ CREATE TABLE `autenticacao` (
 --
 
 INSERT INTO `autenticacao` (`id_usuario`, `nome`, `email`, `senha`, `tipo`) VALUES
-(1, 'Teste1', 'teste1@teste.teste', 'teste1', 'Senhorio'),
-(2, 'teste2', 'teste2@teste.teste', 'teste2', 'Inquilino'),
-(3, 'teste3', 'teste3@teste.teste', 'teste3', 'Senhorio'),
-(4, 'teste4', 'teste4@teste.teste', 'teste4', 'Inquilino'),
-(5, 'test', 'test', 'test', 'Inquilino');
+(1, 'Teste1', 'teste1@teste.teste', 'e959088c6049f1104c84c9bde5560a13', 'Senhorio'),
+(2, 'teste2', 'teste2@teste.teste', '38851536d87701d2191990e24a7f8d4e', 'Inquilino'),
+(3, 'teste3', 'teste3@teste.teste', '507eb04c9c427e9f961e47a7204fac41', 'Senhorio'),
+(4, 'teste4', 'teste4@teste.teste', '73bf3127fb3c9791e88a4d308171fd85', 'Inquilino'),
+(5, 'test', 'test', '098f6bcd4621d373cade4e832627b4f6', 'Inquilino');
 
 -- --------------------------------------------------------
 

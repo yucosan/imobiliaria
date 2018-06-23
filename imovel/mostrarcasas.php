@@ -4,18 +4,46 @@
 $obj = $_POST;
 $bairro = $obj['bairro'];
 $tipo = $obj['tipo'];
-if($obj['n_quartos'] != NULL)
+$aux = 2;
+$sql = "SELECT * FROM imovel WHERE disponivel = true AND bairro = ? AND tipo = ?";
+//echo $sql;
+//echo '<br>';
+$sql2[0] = $bairro;
+$sql2[1] = $tipo;
+if($obj['n_quartos'] != NULL){
 	$n_quartos = $obj['n_quartos'];
+	$sql = $sql . " AND n_quartos >= ?";
+	$sql2[$aux] = $n_quartos;
+	$aux++;
+}
 if($obj['valor_min'] != NULL)
+{
 	$valor_min = $obj['valor_min'];
+	$sql = $sql . " AND preco >= ?";
+	$sql2[$aux] = $valor_min;
+	$aux++;
+}
 if($obj['valor_max'] != NULL)
+{
 	$valor_max = $obj['valor_max'];
-if($obj['area'] != NULL)
+	$sql = $sql . " AND preco <= ?";
+	$sql2[$aux] = $valor_max;
+	$aux++;
+}
+if($obj['area'] != NULL){
 	$area = $obj['area'];
-
-	$stmt = $pdo->prepare("SELECT * FROM imovel WHERE disponivel = true AND bairro = ? AND tipo = ?;");
-
-	$stmt -> execute([$bairro,$tipo]);
+	$sql = $sql . " AND area >= ?";
+	$sql2[$aux] = $area;
+	$aux++;
+}
+$sql = $sql . ";";
+//echo $sql;
+//echo '<br>';
+	$stmt = $pdo->prepare($sql);
+	//$stmt = $pdo->prepare("SELECT * FROM imovel WHERE disponivel = true AND bairro = ? AND tipo = ?;");
+	
+	$stmt -> execute($sql2);
+	//$stmt -> execute([$bairro,$tipo]);
 
 	$data = $stmt->fetchAll();
 	
@@ -55,7 +83,7 @@ else
 			<div class="card" style="width: 18rem; margin-top: 3rem;">
 			  <img class="card-img-top" style="height: 140px" src="<?php echo 'data:image/jpeg;base64,'.$imagem1[$aux2] ?>" alt="Card image cap">
 			  <div class="card-body">
-				<h5 class="card-title"> <?php echo $tipo[$aux2] ?></h5><!--
+				<h5 class="card-title"> <?php echo $tipo ?></h5><!--
 				<p class="card-text">Blablabla</p> -->
 			  </div>
 			  <ul class="list-group list-group-flush">

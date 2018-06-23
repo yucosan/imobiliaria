@@ -32,7 +32,7 @@
 		echo '<br>';
 		echo 'Retornando em 3 segundos';
 		http_response_code(200);
-		header('refresh:3; /imovel/users/index.php');
+		header('refresh:3; /imovel/users/boleto.php');
 	}
 	else 
 	{

@@ -9,7 +9,7 @@
 
 	$stmt = $pdo->prepare("SELECT id_usuario, nome, senha FROM autenticacao WHERE nome = ? AND senha = ?;");
 
-	$stmt -> execute([$username, $password]);
+	$stmt -> execute([$username, md5($password)]);
 	$data = $stmt->fetchAll();
 	//var_dump($data);
 		
