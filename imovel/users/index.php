@@ -3,6 +3,32 @@
 <body>
 <?php include('navbar.php'); ?>
 		<div class="container">
+		
+		<div style="height: 10px;"></div>
+			<div class="row" style="text-align:center;">
+				<div class="col" style="text-align:center; border:2px solid black;border-radius: 10px;">
+						<div style="height: 10px;text-align: center;">
+							Bairro: <input type="text" placeholder="Bairro.." id="bairro" name="bairro" value="">
+							Tipo: <select class=" contact-form__input contact-form__input--select" id="tipo" name="tipo">
+							<option> Casa</option>
+							<option> Apartamento</option>
+							</select>
+						</div>
+						<br>
+						<a href="" id="avancada" class="card-link busca-avancada">Busca avançada</a>
+						<div id="div-busca-avancada" style="display:none">
+							Numero de quartos: <input type="text" placeholder="" id="n_quartos" name="n_quartos">
+							Valor min: <input type="text" placeholder="" id="valor_min" name="valor_min">
+							Valor max: <input type="text" placeholder="" id="valor_max" name="valor_max">
+							Area: <input type="text" placeholder="" id="area" name="area">
+						</div>
+						<button type="button" id ="buscar"class="btn btn-primary">Buscar </button>
+						<br><br>
+
+				</div>
+			</div>
+				
+				<div style="height: 10px;"></div>
 				<div style="text-align: center;">
 <?php
 
@@ -16,10 +42,17 @@
 
 	$result = $stmt->rowcount();
 	
-	if ($result<2)
-	echo "Responsavel por ".$result." imovel";
+	if ($result<2){
+	?>
+	<div id="resultado">Responsavel por <?php echo $result?> imovel</div>
+	<?php
+	}
 	else
-	echo "Responsavel por ".$result." imoveis";
+	{
+	?>
+	<div id="resultado">Responsavel por <?php echo $result?> imoveis</div>
+	<?php
+	}
 }
  else
 {	
@@ -31,10 +64,17 @@
 
 	$result = $stmt->rowcount();
 	
-	if ($result<2)
-	echo "Existe ".$result." imovel disponivel";
-else
-	echo "Existem ".$result." imoveis disponiveis";
+	if ($result<2){
+	?>
+	<div id="resultado">Existe <?php echo $result?> imovel disponivel</div>
+	<?php
+	}
+	else
+	{
+	?>
+	<div id="resultado">Existem <?php echo $result?> imoveis disponiveis</div>
+	<?php
+	}
 } 
 	?>
 				<div class="container" id="casas">
@@ -108,125 +148,33 @@ else
 <?php include('out_modal.php'); ?>
 <?php include('modal.php'); ?>
 
-<script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.min.js"></script>
-<script src="../js/dataTables.responsive.js"></script>
 <script>
 $(document).ready(function(){
-	
-	$('#chatRoom').DataTable({
-	"bLengthChange": true,
-	"bInfo": true,
-	"bPaginate": true,
-	"bFilter": true,
-	"bSort": false,
-	"pageLength": 7
+	$('#buscar').on('click', function() {
+	  $('#resultado').hide();
+		$.ajax({
+			type: "POST",
+			url: '../mostrarcasas.php',
+			data: 
+			{ 
+				bairro: $('#bairro')[0].value,
+				tipo: $('#tipo')[0].value,
+				n_quartos: $('#n_quartos')[0].value,
+				valor_min: $('#valor_min')[0].value,
+				valor_max: $('#valor_max')[0].value,
+				area: $('#area')[0].value		
+			},
+			success: function(result){
+				$("#casas").html(result);
+			}
+		});
 	});
 	
-	$('#myChatRoom').DataTable({
-	"sDom": '<"row view-filter"<"col-sm-12"<"pull-left"l><"pull-right"f><"clearfix">>>t<"row view-pager"<"col-sm-12"<"text-center"ip>>>',
-	"bLengthChange": false,
-	"bInfo": false,
-	"bPaginate": true,
-	"bFilter": false,
-	"bSort": false,
-	"pageLength": 8
+	$('#avancada').on('click', function() {
+		event.preventDefault();
+		$('#div-busca-avancada').toggle();
+		console.log("ava");
 	});
-	
-	$(document).on('click', '.join_chat', function(){
-		var cid=$(this).val();
-		if ($('#status'+cid).val()==1){
-			window.location.href='chatroom.php?id='+cid;
-		}
-		else if ($('#status'+cid).val()==2){
-			$('#join_chat').modal('show');
-			$('.modal-body #chatid').val(cid);
-		}
-		else{
-			$.ajax({
-				url:"addmember.php",
-				method:"POST",
-				data:{
-					id: cid,
-                    
-				},
-				success:function(){
-				window.location.href='chatroom.php?id='+cid;
-				}
-			});
-		}
-	});
-	
-	$(document).on('click', '#addchatroom', function(){
-		chatname=$('#chat_name').val();
-		if($('#chat_password').val()){
-			chatpass=$('#chat_password').val();
-		}else{
-			chatpass="";
-		}
-			$.ajax({
-				url:"add_chatroom.php",
-				method:"POST",
-				data:{
-					chatname: chatname,
-					chatpass: chatpass,
-				},
-				success:function(data){
-					window.location.href='chatroom.php?id='+data;
-				}
-			});
-		
-	});
-	//
-	$(document).on('click', '.delete2', function(){
-		var rid=$(this).val();
-		$('#delete_room2').modal('show');
-		$('.modal-footer #confirm_delete2').val(rid);
-	});
-	
-	$(document).on('click', '#confirm_delete2', function(){
-		var nrid=$(this).val();
-		$('#delete_room2').modal('hide');
-		$('body').removeClass('modal-open');
-		$('.modal-backdrop').remove();
-			$.ajax({
-				url:"deleteroom.php",
-				method:"POST",
-				data:{
-					id: nrid,
-					del: 1,
-				},
-				success:function(dados){
-					console.log(dados);
-					window.location.href='index.php';
-				}
-			});
-	});
-	
-	$(document).on('click', '.leave2', function(){
-		var rid=$(this).val();
-		$('#leave_room2').modal('show');
-		$('.modal-footer #confirm_leave2').val(rid);
-	});
-	
-	$(document).on('click', '#confirm_leave2', function(){
-		var nrid=$(this).val();
-		$('#leave_room2').modal('hide');
-		$('body').removeClass('modal-open');
-		$('.modal-backdrop').remove();
-			$.ajax({
-				url:"leaveroom.php",
-				method:"POST",
-				data:{
-					chatid: nrid,
-					leave: 1,
-				},
-				success:function(){
-					window.location.href='index.php';
-				}
-			});
-	});
- 
 });
 </script>	
 </body>

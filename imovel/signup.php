@@ -32,6 +32,11 @@
         <option>Inquilino</option>
         <option>Senhorio</option>
       </select>
+	  
+<form class="example" action="action_page.php">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
 	  <div style="height: 10px;"></div>
 		<a href="index.php"><button type="submit" id="botao" class="btn btn-primary"><span class="glyphicon glyphicon-save"></span> Sign Up</button></a><a href="index.php"> Back to main page</a>
       
